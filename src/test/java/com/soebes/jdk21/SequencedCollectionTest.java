@@ -1,12 +1,10 @@
 package com.soebes.jdk21;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.SequencedCollection;
 import java.util.stream.Collectors;
