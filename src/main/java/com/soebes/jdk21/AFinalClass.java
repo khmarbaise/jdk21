@@ -2,10 +2,10 @@ package com.soebes.jdk21;
 
 import java.util.Objects;
 
-public final class AFirstRecord {
+public final class AFinalClass {
   private final String name;
 
-  public AFirstRecord(String name) {
+  public AFinalClass(String name) {
     this.name = name;
   }
 
@@ -17,7 +17,7 @@ public final class AFirstRecord {
   public boolean equals(Object obj) {
     if (obj == this) return true;
     if (obj == null || obj.getClass() != this.getClass()) return false;
-    var that = (AFirstRecord) obj;
+    var that = (AFinalClass) obj;
     return Objects.equals(this.name, that.name);
   }
 

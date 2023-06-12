@@ -6,11 +6,11 @@ import org.mockito.Mockito;
 
 import static org.mockito.Mockito.when;
 
-class AFirstRecordTest {
+class AFinalClassTest {
 
   @Test
   void name() {
-    var aFirstRecordMockedStatic = Mockito.mock(AFirstRecord.class);
+    var aFirstRecordMockedStatic = Mockito.mock(AFinalClass.class);
     when(aFirstRecordMockedStatic.name()).thenReturn("test");
     Assertions.assertThat(aFirstRecordMockedStatic.name()).isEqualTo("test");
   }
