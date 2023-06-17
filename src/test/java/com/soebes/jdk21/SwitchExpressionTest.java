@@ -5,6 +5,11 @@ import org.junit.jupiter.api.Test;
 import static com.soebes.jdk21.SwitchExpressionTest.Coin.HEADS;
 import static com.soebes.jdk21.SwitchExpressionTest.Coin.TAILS;
 
+/**
+ * JEP 441: Pattern Matching for switch.
+ *
+ * @see <a href="https://openjdk.org/jeps/441">JEP 441</a>
+ */
 class SwitchExpressionTest {
 
   sealed interface Currency permits Coin {

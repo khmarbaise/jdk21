@@ -37,6 +37,7 @@
       </dependency>
       <!--
        ! Need to update to most recent version of byte-buddy to support JDK21
+       ! mockito version provides 1.14.4 instead.
       -->
       <dependency>
         <groupId>net.bytebuddy</groupId>
@@ -87,22 +88,31 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
-          <argLine>--enable-preview</argLine>
+          <argLine>
+            -XX:+EnableDynamicAgentLoading
+<!--            &#45;&#45;enable-preview-->
+            --add-modules jdk.incubator.vector
+          </argLine>
         </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
         <configuration>
-          <argLine>--enable-preview</argLine>
+          <argLine>
+            -XX:+EnableDynamicAgentLoading
+<!--            &#45;&#45;enable-preview-->
+            --add-modules jdk.incubator.vector
+          </argLine>
         </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <compilerArgs>
-            <compilerArg>--enable-preview</compilerArg>
+          <compilerArgs>--enable-preview
+            <arg>--add-modules</arg>
+            <arg>jdk.incubator.vector</arg>
           </compilerArgs>
         </configuration>
       </plugin>

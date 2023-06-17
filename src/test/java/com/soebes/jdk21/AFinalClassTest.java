@@ -6,6 +6,11 @@ import org.mockito.Mockito;
 
 import static org.mockito.Mockito.when;
 
+/**
+ * JEP 451: Prepare to Disallow the Dynamic Loading of Agents.
+ *
+ * @see <a href="https://openjdk.org/jeps/451">JEP 451</a>
+ */
 class AFinalClassTest {
 
   @Test

@@ -12,6 +12,10 @@ import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * JEP 431: Sequenced Collections
+ * @see <a href="https://openjdk.org/jeps/431">JEP 431</a>
+ */
 class SequencedCollectionTest {
 
   @Test
