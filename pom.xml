@@ -21,6 +21,20 @@
   </properties>
   <dependencyManagement>
     <dependencies>
+      <!--
+       ! Need to update to most recent version of byte-buddy to support JDK21
+       ! assertj provides 1.14.4 instead.
+      -->
+      <dependency>
+        <groupId>net.bytebuddy</groupId>
+        <artifactId>byte-buddy</artifactId>
+        <version>1.14.5</version>
+      </dependency>
+      <dependency>
+        <groupId>net.bytebuddy</groupId>
+        <artifactId>byte-buddy-agent</artifactId>
+        <version>1.14.5</version>
+      </dependency>
       <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
@@ -34,20 +48,6 @@
         <version>3.24.2</version>
         <scope>import</scope>
         <type>pom</type>
-      </dependency>
-      <!--
-       ! Need to update to most recent version of byte-buddy to support JDK21
-       ! mockito version provides 1.14.4 instead.
-      -->
-      <dependency>
-        <groupId>net.bytebuddy</groupId>
-        <artifactId>byte-buddy</artifactId>
-        <version>1.14.5</version>
-      </dependency>
-      <dependency>
-        <groupId>net.bytebuddy</groupId>
-        <artifactId>byte-buddy-agent</artifactId>
-        <version>1.14.5</version>
       </dependency>
 
       <dependency>
