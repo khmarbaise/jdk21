@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.soebes.jdk21.SwitchExpressionTest.Coin.HEADS;
 import static com.soebes.jdk21.SwitchExpressionTest.Coin.TAILS;
+import static java.lang.StringTemplate.STR;
 
 /**
  * JEP 441: Pattern Matching for switch.
@@ -66,6 +67,7 @@ class SwitchExpressionTest {
 
   @Test
   void name() {
-
+    String name = "Jon";
+    String info = STR."My name is \{name}";
   }
 }
