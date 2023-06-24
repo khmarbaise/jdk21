@@ -18,7 +18,9 @@
 //
 = JDK 21 Features
 
-Just a try.
+Just a try. It's related to this blog post:
+
+* https://blog.soebes.io/posts/2023/06/2023-06-24-how-to-use-jdk21-preview-features-incubator/
 
 == State
 
