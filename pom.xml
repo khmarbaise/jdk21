@@ -8,7 +8,7 @@
   <parent>
     <groupId>com.soebes.smpp</groupId>
     <artifactId>smpp</artifactId>
-    <version>6.0.2</version>
+    <version>6.0.3</version>
   </parent>
 
   <groupId>com.soebes.examples</groupId>
@@ -100,17 +100,22 @@
           </argLine>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <enablePreview>true</enablePreview>
-          <compilerArgs>
-            <arg>--add-modules</arg>
-            <arg>jdk.incubator.vector</arg>
-          </compilerArgs>
-        </configuration>
-      </plugin>
     </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <debug>false</debug>
+            <enablePreview>true</enablePreview>
+            <compilerArgs>
+              <arg>--add-modules</arg>
+              <arg>jdk.incubator.vector</arg>
+            </compilerArgs>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
 </project>
