@@ -1,4 +1,4 @@
-package com.soebes.jdk21;
+package com.soebes.jdk21.preview;
 
 import org.junit.jupiter.api.Test;
 
