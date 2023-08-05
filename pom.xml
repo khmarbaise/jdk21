@@ -68,10 +68,13 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
+          <!--
+           ! Check for details in the README.adoc#Dynamic Agents
+          -->
           <argLine>
+            -XX:+EnableDynamicAgentLoading
             --enable-preview
             --add-modules jdk.incubator.vector
-            -XX:+EnableDynamicAgentLoading
           </argLine>
         </configuration>
       </plugin>
@@ -79,10 +82,13 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
         <configuration>
+          <!--
+           ! Check for details in the README.adoc#Dynamic Agents
+          -->
           <argLine>
+            -XX:+EnableDynamicAgentLoading
             --enable-preview
             --add-modules jdk.incubator.vector
-            -XX:+EnableDynamicAgentLoading
           </argLine>
         </configuration>
       </plugin>

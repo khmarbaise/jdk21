@@ -16,6 +16,8 @@
 //   specific language governing permissions and limitations
 //   under the License.
 //
+:quality-heads-up: https://inside.java/2023/07/29/quality-heads-up/
+:mockito-site: https://github.com/mockito/mockito
 = JDK 21 Features
 
 Just a try. It's related to this blog post:
@@ -30,4 +32,62 @@ It's just a Proof Of Concept
 
 JDK21+
 
+== POM Details
+
+=== Compiler Configuration
+
+Some detailed hints about the configuration in the `pom.xml` for the compiler etc.
+
+If you missed the configuration `<arg>-proc:full</arg>` as part of the `maven-compiler-plugin`
+configuration for JDK21+ you will get the following output during the compilation of the
+production code (`src/main/java`) and your test code (`src/test/java`):
+[source,text]
+----
+Annotation processing is enabled because one or more processors were found
+on the class path. A future release of javac may disable annotation processing
+unless at least one processor is specified by name (-processor), or a search
+path is specified (--processor-path, --processor-module-path), or annotation
+processing is enabled explicitly (-proc:only, -proc:full).
+Use -Xlint:-options to suppress this message.
+Use -proc:none to disable annotation processing.
+----
+That requires the setup of the arg configuration element for the `maven-compiler-plugin`.
+More details can be found in this {quality-heads-up}[article].
+
+=== Dynamic Agents
+
+In case you will see the following WARNING while using {mockito-site}[mockito] or alike:
+[source]
+----
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/Users/khm/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.5/byte-buddy-agent-1.14.5.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+----
+this means you are running on at least JDK21+ which means you have to enhance your configuration for
+`maven-surefire-plugin` and for `maven-failsafe-plugin` with the following:
+[source,xml]
+----
+<argLine>-XX:+EnableDynamicAgentLoading</argLine>
+----
+That means in the end you have to have the following configuration for your plugins like this:
+[source,xml]
+----
+<plugin>
+  <artifactId>maven-surefire-plugin</artifactId>
+  <configuration>
+    <argLine>-XX:+EnableDynamicAgentLoading</argLine>
+  </configuration>
+</plugin>
+<plugin>
+  <artifactId>maven-failsafe-plugin</artifactId>
+  <configuration>
+    <!--
+     ! Needed to suppress WARNINGs related to the usage of dynamic agents (byte-buddy)
+     -->
+    <argLine>-XX:+EnableDynamicAgentLoading</argLine>
+  </configuration>
+</plugin>
+----
 
