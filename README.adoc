@@ -77,6 +77,9 @@ That means in the end you have to have the following configuration for your plug
 <plugin>
   <artifactId>maven-surefire-plugin</artifactId>
   <configuration>
+    <!--
+     ! Needed to suppress WARNINGs related to the usage of dynamic agents (byte-buddy)
+     -->
     <argLine>-XX:+EnableDynamicAgentLoading</argLine>
   </configuration>
 </plugin>
