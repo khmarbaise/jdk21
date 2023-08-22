@@ -1,16 +1,16 @@
 package com.soebes.jdk21;
 
-import org.junit.jupiter.api.Test;
-
-import static com.soebes.jdk21.MONTHS.MAY;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 
 class SwitchExpressionYieldTest {
 
-  @Test
-  void name() {
+  @ParameterizedTest
+  @EnumSource(MONTHS.class)
+  void name(MONTHS currentMonth) {
+    System.out.println("currentMonth = " + currentMonth);
     int year = 2023;
-    MONTHS month = MAY;
-    int ndays = switch(month) {
+    int ndays = switch(currentMonth) {
       case JAN, MAR, MAY, JUL, AUG, OCT, DEC -> 31;
       case APR, JUN, SEP, NOV -> 30;
       case FEB -> {
