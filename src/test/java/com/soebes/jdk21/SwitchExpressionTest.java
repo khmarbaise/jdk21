@@ -60,6 +60,7 @@ class SwitchExpressionTest {
       default -> obj.toString();
     };
     System.out.println("formatted = " + formatted);
+
   }
 
 }
