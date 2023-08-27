@@ -1,5 +1,9 @@
 package com.soebes.jdk21;
 
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
 import static com.soebes.jdk21.SwitchExpressionTest.Coin.HEADS;
 import static com.soebes.jdk21.SwitchExpressionTest.Coin.TAILS;
 
@@ -60,7 +64,35 @@ class SwitchExpressionTest {
       default -> obj.toString();
     };
     System.out.println("formatted = " + formatted);
+  }
+
+  interface Animmal {
 
   }
 
+  record Dog() implements Animmal {
+  }
+
+  record Cat() implements Animmal {
+  }
+
+  record Snake() implements Animmal {
+  }
+
+
+  void switchWithAnimal(Animmal animmal) {
+    switch (animmal) {
+      case Dog d -> System.out.println("d = " + d);
+      case Cat c -> System.out.println("c = " + c);
+      case Snake s -> System.out.println("s = " + s);
+      default -> throw new IllegalStateException("Unexpected value: " + animmal);
+    }
+  }
+
+  @Test
+  void DogCatSnake() {
+    var animals = List.of(new Snake(), new Cat(), new Dog());
+
+    animals.forEach(this::switchWithAnimal);
+  }
 }

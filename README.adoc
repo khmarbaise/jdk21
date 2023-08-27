@@ -94,3 +94,9 @@ That means in the end you have to have the following configuration for your plug
 </plugin>
 ----
 
+
+This branch is trying to experiment with:
+
+https://bugs.openjdk.org/browse/JDK-8280389
+https://www.youtube.com/watch?v=pcg-E_qyMOI
+https://cr.openjdk.org/~asotona/8308754/classfile-api/javadoc/java.base/java/lang/classfile/package-summary.html

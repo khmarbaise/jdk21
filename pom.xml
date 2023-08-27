@@ -17,7 +17,9 @@
   <name>JDK21</name>
 
   <properties>
-    <maven.compiler.release>21</maven.compiler.release>
+    <maven.compiler.release/>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -31,7 +33,7 @@
       <dependency>
         <groupId>org.mockito</groupId>
         <artifactId>mockito-bom</artifactId>
-        <version>5.4.0</version>
+        <version>5.5.0</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>
@@ -78,9 +80,15 @@
            ! Check for details in the README.adoc#Dynamic Agents
           -->
           <argLine>
-            -XX:+EnableDynamicAgentLoading
+            @{argLine}
             --enable-preview
             --add-modules jdk.incubator.vector
+            --add-exports java.base/jdk.internal.classfile=ALL-UNNAMED
+            --add-exports java.base/jdk.internal.classfile.attribute=ALL-UNNAMED
+            --add-exports java.base/jdk.internal.classfile.components=ALL-UNNAMED
+            --add-exports java.base/jdk.internal.classfile.constantpool=ALL-UNNAMED
+            --add-exports java.base/jdk.internal.classfile.impl=ALL-UNNAMED
+            --add-exports java.base/jdk.internal.classfile.instruction=ALL-UNNAMED
           </argLine>
         </configuration>
       </plugin>
@@ -92,10 +100,28 @@
            ! Check for details in the README.adoc#Dynamic Agents
           -->
           <argLine>
+            @{argLine}
             -XX:+EnableDynamicAgentLoading
             --enable-preview
             --add-modules jdk.incubator.vector
+            --add-exports java.base/jdk.internal.classfile=ALL-UNNAMED
+            --add-exports java.base/jdk.internal.classfile.attribute=ALL-UNNAMED
+            --add-exports java.base/jdk.internal.classfile.components=ALL-UNNAMED
+            --add-exports java.base/jdk.internal.classfile.constantpool=ALL-UNNAMED
+            --add-exports java.base/jdk.internal.classfile.impl=ALL-UNNAMED
+            --add-exports java.base/jdk.internal.classfile.instruction=ALL-UNNAMED
           </argLine>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <enablePreview>true</enablePreview>
+          <compilerArgs>
+            <arg>--add-modules</arg>
+            <arg>jdk.incubator.vector</arg>
+          </compilerArgs>
         </configuration>
       </plugin>
     </plugins>
@@ -105,11 +131,31 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <configuration>
-            <debug>false</debug>
+            <debug>true</debug>
             <enablePreview>true</enablePreview>
             <compilerArgs>
               <arg>--add-modules</arg>
               <arg>jdk.incubator.vector</arg>
+              <arg>--add-exports</arg>
+              <arg>java.base/jdk.internal.classfile=ALL-UNNAMED</arg>
+              <arg>--add-exports</arg>
+              <arg>java.base/jdk.internal.classfile=com.soebes.jdk</arg>
+              <arg>--add-exports</arg>
+              <arg>java.base/jdk.internal.classfile.instruction=ALL-UNNAMED</arg>
+              <arg>--add-exports</arg>
+              <arg>java.base/jdk.internal.classfile.instruction=com.soebes.jdk</arg>
+              <arg>--add-exports</arg>
+              <arg>java.base/jdk.internal.classfile.attribute=ALL-UNNAMED</arg>
+              <arg>--add-exports</arg>
+              <arg>java.base/jdk.internal.classfile.attribute=com.soebes.jdk</arg>
+              <arg>--add-exports</arg>
+              <arg>java.base/jdk.internal.classfile.components=ALL-UNNAMED</arg>
+              <arg>--add-exports</arg>
+              <arg>java.base/jdk.internal.classfile.components=com.soebes.jdk</arg>
+              <arg>--add-exports</arg>
+              <arg>java.base/jdk.internal.classfile.constantpool=ALL-UNNAMED</arg>
+              <arg>--add-exports</arg>
+              <arg>java.base/jdk.internal.classfile.constantpool=com.soebes.jdk</arg>
             </compilerArgs>
           </configuration>
         </plugin>
