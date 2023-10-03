@@ -31,7 +31,7 @@
       <dependency>
         <groupId>org.mockito</groupId>
         <artifactId>mockito-bom</artifactId>
-        <version>5.4.0</version>
+        <version>5.5.0</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>
@@ -92,28 +92,24 @@
            ! Check for details in the README.adoc#Dynamic Agents
           -->
           <argLine>
+            @{argLine}
             -XX:+EnableDynamicAgentLoading
             --enable-preview
             --add-modules jdk.incubator.vector
           </argLine>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <enablePreview>true</enablePreview>
+          <compilerArgs>
+            <arg>--add-modules</arg>
+            <arg>jdk.incubator.vector</arg>
+          </compilerArgs>
+        </configuration>
+      </plugin>
     </plugins>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <configuration>
-            <debug>false</debug>
-            <enablePreview>true</enablePreview>
-            <compilerArgs>
-              <arg>--add-modules</arg>
-              <arg>jdk.incubator.vector</arg>
-            </compilerArgs>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
   </build>
 </project>
