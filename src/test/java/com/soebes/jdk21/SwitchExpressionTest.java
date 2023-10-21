@@ -52,6 +52,7 @@ class SwitchExpressionTest {
 
   static void patternWithWhen(Object obj) {
     String formatted = switch (obj) {
+      case null -> "Unknown";
       case Integer i -> String.format("int %d", i);
       case Long l -> String.format("long %d", l);
       case Double d -> String.format("double %f", d);

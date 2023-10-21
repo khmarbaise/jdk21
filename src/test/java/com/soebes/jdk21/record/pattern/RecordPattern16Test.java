@@ -10,8 +10,8 @@ class RecordPattern16Test {
   record Rectangle(ColoredPoint upperLeft, ColoredPoint lowerRight) {}
 
   // As of Java 21
-  static void printUpperLeftColoredPointJDK21(Rectangle r) {
-    if (r instanceof Rectangle(ColoredPoint ul, ColoredPoint lr)) {
+  void printUpperLeftColoredPointJDK21(Rectangle r) {
+    if (r instanceof Rectangle(ColoredPoint ul, ColoredPoint _)) {
       System.out.println("ul.c():" + ul.c());
     }
   }
