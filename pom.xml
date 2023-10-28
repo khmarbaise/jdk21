@@ -9,6 +9,7 @@
     <groupId>com.soebes.smpp</groupId>
     <artifactId>smpp</artifactId>
     <version>6.0.3</version>
+    <relativePath/>
   </parent>
 
   <groupId>com.soebes.examples</groupId>
